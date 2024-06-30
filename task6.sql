@@ -7,7 +7,7 @@ create table current.employee_actions
     tsd_id      UInt32,
     dt_created  DateTime
 )
-engine = ReplacingMergeTree()
+engine = ReplacingMergeTree(dt)
 partition by toYYYYMMDD(dt)
 order by employee_id
 ttl toStartOfDay(dt) + interval 1 day
